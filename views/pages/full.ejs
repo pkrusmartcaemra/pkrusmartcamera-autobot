@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <title>IP Camera - <%= camera.name %> | Full Screen</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="camera"></canvas>
+    <input id="ip" value="<%= camera.ip %>" hidden>
+    <input id="port" value="<%= camera.port %>" hidden>
+    <script type="text/javascript" src="/jsmpeg.min.js"></script>
+    <script type="text/javascript">
+      var ip = document.getElementById("ip").value;
+      var port = document.getElementById("port").value;
+      var canvas = document.getElementById("camera");
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      function fullscreen(){
+        if(canvas.webkitRequestFullScreen) {
+          canvas.webkitRequestFullScreen();
+        }
+        else {
+          canvas.mozRequestFullScreen();
+        }            
+      }
+      canvas.addEventListener("click", fullscreen)
+
+      var websocket = new WebSocket("wss://"+ip);
+      // var websocket = new WebSocket("ws://"+ip+":"+port);
+      var player = new jsmpeg(websocket, {
+        canvas: canvas,
+        autoplay: true,
+        loop: true
+      });
+    </script>
+  </body>
+</html>

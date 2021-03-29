@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <title>IP Camera</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body id="body">
+    <section id="navbar">
+      <div class="navbar">
+        <div class="navbar_left">
+          <div class="logo">
+            <a href="/">IP Camera</a>
+          </div>
+        </div>
+
+        <div class="navbar_right">
+          <div class="profile">
+            <div class="icon_wrap">
+              <img
+                id="pictureUrl"
+                src="https://mokmoon.com/images/ic_liff.png"
+                alt="profile_pic"
+              />
+              <span id="displayName" class="name">Camera</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="button">
+      <h1>Camera List</h1>
+      <% cameras.forEach((l) => { %>
+        <button onclick="location.href='?camera=<%= l.id %>'"><%= l.name %></button>
+      <% }) %>
+    </section>
+    <script type="text/javascript" src="/index.js"></script>
+  </body>
+</html>

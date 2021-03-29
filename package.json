@@ -1,0 +1,26 @@
+{
+  "name": "ipcamera",
+  "version": "1.0.0",
+  "description": "IP Camera",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FriendRPG/ipcamera.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FriendRPG/ipcamera/issues"
+  },
+  "homepage": "https://github.com/FriendRPG/ipcamera#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  }
+}

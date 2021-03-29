@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <title>IP Camera - <%= camera.name %></title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://static.line-scdn.net/liff/edge/versions/2.8.1/sdk.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body id="body">
+    <section id="navbar">
+      <div class="navbar">
+        <div class="navbar_left">
+          <div class="logo">
+            <a href="/">IP Camera</a>
+          </div>
+        </div>
+
+        <div class="navbar_right">
+          <div class="profile">
+            <div class="icon_wrap">
+              <img
+                id="pictureUrl"
+                src="https://mokmoon.com/images/ic_liff.png"
+                alt="profile_pic"
+              />
+              <span id="displayName" class="name">Camera</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feature">
+      <div style="margin-top: 50px">
+        <div id="video_pane" style="margin: auto; display: table;">
+          <canvas
+            id="camera"
+            class="video-image"
+            width="auto"
+            height="auto"
+          ></canvas>
+          <h4>Camera: <%= camera.name %></h4>
+        </div>
+      </div>
+    </section>
+
+    <section id="button">
+      <button id="btnFull">Full Screen</button>
+      <button id="btnSend">Take Photo</button>
+      <button id="btnShare">Share Photo</button>
+    </section>
+    <input id="ip" value="<%= camera.ip %>" hidden>
+    <input id="port" value="<%= camera.port %>" hidden>
+    <input id="cameraId" value="<%= camera.id %>" hidden>
+    <script type="text/javascript" src="/jsmpeg.min.js"></script>
+    <script type="text/javascript">
+      var ip = document.getElementById("ip").value;
+      var port = document.getElementById("port").value;
+      var canvas = document.getElementById("camera");
+      var websocket = new WebSocket("wss://"+ip);
+      // var websocket = new WebSocket("ws://"+ip+":"+port);
+      var player = new jsmpeg(websocket, {
+        canvas: canvas,
+        autoplay: true,
+        loop: true
+      });
+    </script>
+    <script type="text/javascript" src="/app.js"></script>
+  </body>
+</html>
