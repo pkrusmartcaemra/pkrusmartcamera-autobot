@@ -2,8 +2,8 @@
     {
         "id": "1",
         "name": "Mobile 1",
-        "ip": "c5ce4c0bb166.ngrok.io",
-        "port": "9999",
+        "ip": "192.168.1.6",
+        "port": "8080",
         "photo": "https://4d183c52213c.ngrok.io/photo.jpg",
         "photo_auth": "Digest username=\"admin\", realm=\"IP Webcam\", nonce=\"1616422585\", uri=\"/photo.jpg\", response=\"d77d2f4d3556875c4cec1d2310a93996\", qop=auth, nc=00000062, cnonce=\"49c25e411898c7a7\""
     },
